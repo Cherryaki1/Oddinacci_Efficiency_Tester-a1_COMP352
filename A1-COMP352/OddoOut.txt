@@ -1,3 +1,4 @@
-Time taken for Linear Recursion: 177800
-Time taken for Linear Recursion: 87400
-Time taken for Linear Recursion: 89600
+Time taken for Linear Recursion: 296800
+Time taken for Linear Recursion: 317800
+Time taken for Linear Recursion: 222000
+Time taken for Linear Recursion: 306100

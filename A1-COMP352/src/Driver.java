@@ -4,22 +4,22 @@ import java.io.PrintWriter;
 
 public class Driver {
     public static void main(String[] args) {
-        //System.out.println(multipleOdd(10));
-        //int[] a = linearOdd(10);
-        //System.out.println(a[0]);
-
+        // System.out.println(multipleOdd(10));
+        // int[] a = linearOdd(10);
+        // System.out.println(a[0]);
+        System.out.println(tailOdd(10, 1, 1, 1));
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(new FileOutputStream("OddoOut.txt", true));
             long start = System.nanoTime();
-            for (int i = 5; i < 100; i+=5) {
+            for (int i = 5; i < 200; i += 5) {
                 linearOdd(i);
             }
             long end = System.nanoTime();
-            pw.write("Time taken for Linear Recursion: " + (end-start) + "\n");
+            pw.write("Time taken for Linear Recursion: " + (end - start) + "\n");
             pw.close();
         } catch (FileNotFoundException e) {
-           System.out.println("File could not be opened.");
+            System.out.println("File could not be opened.");
         }
 
     }
@@ -49,6 +49,19 @@ public class Driver {
             a[1] = i;
             a[2] = j;
             return a;
+        }
+    }
+
+    // question c
+    public static int tailOdd(int n, int i, int j, int k) {
+        if (n == 1) {
+            return i;
+        } else if (n == 2) {
+            return j;
+        } else if (n == 3) {
+            return k;
+        } else {
+            return tailOdd(n - 1, j, k, i+j+k);
         }
     }
 
