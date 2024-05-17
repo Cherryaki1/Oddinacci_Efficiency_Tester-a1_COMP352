@@ -1,8 +1,27 @@
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
 public class Driver {
     public static void main(String[] args) {
-        System.out.println(multipleOdd(10));
-        int[] a = linearOdd(10);
-        System.out.println(a[0]);
+        //System.out.println(multipleOdd(10));
+        //int[] a = linearOdd(10);
+        //System.out.println(a[0]);
+
+        PrintWriter pw = null;
+        try {
+            pw = new PrintWriter(new FileOutputStream("OddoOut.txt", true));
+            long start = System.nanoTime();
+            for (int i = 5; i < 100; i+=5) {
+                linearOdd(i);
+            }
+            long end = System.nanoTime();
+            pw.write("Time taken for Linear Recursion: " + (end-start) + "\n");
+            pw.close();
+        } catch (FileNotFoundException e) {
+           System.out.println("File could not be opened.");
+        }
+
     }
 
     public static int multipleOdd(int n) {
