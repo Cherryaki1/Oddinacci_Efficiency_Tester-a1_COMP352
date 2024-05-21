@@ -1,0 +1,3 @@
+None of the two algorithms use tail recursion.
+For the multiple algorithm, the last execution is doing an addition.
+For the linear algorithm, the last action updates the index of the array.
