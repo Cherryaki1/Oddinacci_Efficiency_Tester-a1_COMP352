@@ -9,12 +9,11 @@ public class Driver {
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(new FileOutputStream("OddoOut.txt", true));
-            for (int n = 1; n <= 200; n += 5) {
+            for (int n = 5; n <= 200; n += 5) {
                 long startTime = System.nanoTime();
                 double[] a = linearOdd(n);
-                pw.write("linearOdd(" + n  + ") is " + a[0] + ". ");
                 long endTime  = System.nanoTime();
-                pw.write("The runtime is " + (endTime - startTime) + " nanoseconds.\n");
+                pw.write("linearOdd(" + n  + ") is " + a[0] + ". The runtime is " + (endTime - startTime) + " nanoseconds.\n");
             }
             pw.close();
         } catch (FileNotFoundException e) {
