@@ -5,18 +5,17 @@ import java.io.PrintWriter;
 public class Driver {
     public static void main(String[] args) {
         // System.out.println(multipleOdd(10));
-        // int[] a = linearOdd(10);
-        // System.out.println(a[0]);
         System.out.println(tailOdd(10, 1, 1, 1));
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(new FileOutputStream("OddoOut.txt", true));
-            long start = System.nanoTime();
-            for (int i = 5; i < 200; i += 5) {
-                linearOdd(i);
+            for (int n = 1; n <= 200; n += 5) {
+                long startTime = System.nanoTime();
+                double[] a = linearOdd(n);
+                pw.write("linearOdd(" + n  + ") is " + a[0] + ". ");
+                long endTime  = System.nanoTime();
+                pw.write("The runtime is " + (endTime - startTime) + " nanoseconds.\n");
             }
-            long end = System.nanoTime();
-            pw.write("Time taken for Linear Recursion: " + (end - start) + "\n");
             pw.close();
         } catch (FileNotFoundException e) {
             System.out.println("File could not be opened.");
@@ -32,9 +31,9 @@ public class Driver {
         }
     }
 
-    public static int[] linearOdd(int n) {
-        int[] a = new int[3];
-        int i = 0, j = 0, k = 0;
+    public static double[] linearOdd(int n) {
+        double[] a = new double[3];
+        double i = 0, j = 0, k = 0;
         if (n <= 3) {
             a[0] = 1;
             a[1] = 1;
