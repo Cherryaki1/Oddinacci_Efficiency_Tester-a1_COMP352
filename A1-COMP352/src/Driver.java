@@ -1,11 +1,14 @@
+//Botao Yang (40213554) and Valerie Nguyen (40284261)
+//Programming Assignment 1
+//COMP 352 AA
+//Due May 24, 2024
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
 public class Driver {
     public static void main(String[] args) {
-        // System.out.println(multipleOdd(10));
-        System.out.println(tailOdd(10, 1, 1, 1));
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(new FileOutputStream("OddoOut.txt", true));
@@ -29,25 +32,27 @@ public class Driver {
 
     }
 
-    public static double multipleOdd(int n) {
-        if (n <= 3) {
+    //Multiple Recursion
+    public static double multipleOdd(int n) { 
+        if (n <= 3) { //base case: if n is less than 3, return the first three predetermined values
             return 1;
-        } else {
+        } else { //recursive call: sum of the three previous Oddonacci numbers Fn-1, Fn-2 and Fn-3
             return multipleOdd(n - 1) + multipleOdd(n - 2) + multipleOdd(n - 3);
         }
     }
 
+    //Linear Recursion
     public static double[] linearOdd(int n) {
-        double[] a = new double[3];
+        double[] a = new double[3]; //array to store Oddonacci numbers
         double i = 0, j = 0, k = 0;
-        if (n <= 3) {
+        if (n <= 3) { //base case: if n is less than three, return array with the first three predetermined values
             a[0] = 1;
             a[1] = 1;
             a[2] = 1;
             return a;
-        } else {
-            a = linearOdd(n - 1);
-            i = a[0];
+        } else { //shift the values in the array to the next Oddonacci number where a[0] is i+j+k (the next Oddonacci number), a[1] is i and a[0] j
+            a = linearOdd(n - 1); //to find the previous Oddonacci number
+            i = a[0]; 
             j = a[1];
             k = a[2];
             a[0] = i + j + k;
@@ -57,8 +62,9 @@ public class Driver {
         }
     }
 
-    // Question c
-    public static int tailOdd(int n, int i, int j, int k) {
+    // Tail Recursion
+    public static int tailOdd(int n, int i, int j, int k) { //i, j and k are Oddonacci numbers
+        //base cases: if n is less than three, return the first, second or third Oddonacci number
         if (n == 1) {
             return i;
         } else if (n == 2) {
@@ -66,7 +72,8 @@ public class Driver {
         } else if (n == 3) {
             return k;
         } else {
-            return tailOdd(n - 1, j, k, i+j+k);
+            return tailOdd(n - 1, j, k, i+j+k); //recursive call: shift all parameters to the next Oddonacci number
+                                                //i becomes j, j becomes k, and k becomes i, j, k (the next Oddonacci number)
         }
     }
 

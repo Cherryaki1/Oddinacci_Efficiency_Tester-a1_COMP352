@@ -1,1 +1,0 @@
-Since are are  calling the function 3 times, we are branching 3 times resulting in 3^n.
