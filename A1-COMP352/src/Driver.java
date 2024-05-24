@@ -15,6 +15,13 @@ public class Driver {
                 long endTime  = System.nanoTime();
                 pw.write("linearOdd(" + n  + ") is " + a[0] + ". The runtime is " + (endTime - startTime) + " nanoseconds.\n");
             }
+            System.out.println("");
+            for (int n = 1; n <=40; n++ ) {
+                long startTime = System.nanoTime();
+                double a = multipleOdd(n);
+                long endTime  = System.nanoTime();
+                pw.write("multipleOdd(" + n  + ") is " + a + ". The runtime is " + (endTime - startTime) + " nanoseconds.\n");
+            }
             pw.close();
         } catch (FileNotFoundException e) {
             System.out.println("File could not be opened.");
@@ -22,7 +29,7 @@ public class Driver {
 
     }
 
-    public static int multipleOdd(int n) {
+    public static double multipleOdd(int n) {
         if (n <= 3) {
             return 1;
         } else {
@@ -50,7 +57,7 @@ public class Driver {
         }
     }
 
-    // question c
+    // Question c
     public static int tailOdd(int n, int i, int j, int k) {
         if (n == 1) {
             return i;
