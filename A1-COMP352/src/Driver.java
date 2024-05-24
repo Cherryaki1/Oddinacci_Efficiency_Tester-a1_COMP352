@@ -12,6 +12,7 @@ public class Driver {
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(new FileOutputStream("OddoOut.txt", true));
+            //writing runtime performance in nanoseconds of linear recursion from 5 to 200 in increments of 5
             for (int n = 5; n <= 200; n += 5) {
                 long startTime = System.nanoTime();
                 double[] a = linearOdd(n);
@@ -19,7 +20,8 @@ public class Driver {
                 pw.write("linearOdd(" + n  + ") is " + a[0] + ". The runtime is " + (endTime - startTime) + " nanoseconds.\n");
             }
             System.out.println("");
-            for (int n = 1; n <=40; n++ ) {
+            //writing runtime performance in nanoseconds of multiple recursion from 1 to 40 in increments of 1
+            for (int n = 1; n <=40; n++) {
                 long startTime = System.nanoTime();
                 double a = multipleOdd(n);
                 long endTime  = System.nanoTime();
@@ -50,8 +52,8 @@ public class Driver {
             a[1] = 1;
             a[2] = 1;
             return a;
-        } else { //shift the values in the array to the next Oddonacci number where a[0] is i+j+k (the next Oddonacci number), a[1] is i and a[0] j
-            a = linearOdd(n - 1); //to find the previous Oddonacci number
+        } else { //shift the values in the array to the next Oddonacci number where a[0] is i+j+k (the next Oddonacci number), a[1] is i and a[0] is j
+            a = linearOdd(n - 1); //to find the previous Oddonacci numbers
             i = a[0]; 
             j = a[1];
             k = a[2];
