@@ -34,7 +34,7 @@ public class Driver {
 
     }
 
-    //Multiple Recursion
+    // Multiple Recursion
     public static double multipleOdd(int n) { 
         if (n <= 3) { //base case: if n is less than 3, return the first three predetermined values
             return 1;
@@ -43,7 +43,7 @@ public class Driver {
         }
     }
 
-    //Linear Recursion
+    // Linear Recursion
     public static double[] linearOdd(int n) {
         double[] a = new double[3]; //array to store Oddonacci numbers
         double i = 0, j = 0, k = 0;
